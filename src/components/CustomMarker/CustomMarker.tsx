@@ -14,7 +14,7 @@ type CustomMarkerType = {
 
 export const CustomMarker: React.FC<CustomMarkerType> = ({ children, position, icon, size1 = 40, size2 = 40, clusterer, id, openId, setOpenId }) => {
 
-    const handleToggleOpen = (id: string) => {
+    const handleToggleOpen = (id: string): void => {
         if (openId === id) {
             setOpenId('')
         } else {
@@ -22,7 +22,7 @@ export const CustomMarker: React.FC<CustomMarkerType> = ({ children, position, i
         }
     }
 
-    const handleToggleClose = () => {
+    const handleToggleClose = (): void => {
         setOpenId('')
     }
 

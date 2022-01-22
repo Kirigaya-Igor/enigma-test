@@ -22,7 +22,7 @@ type location = {
 
 export type CarType = {
     address: address | null
-    batteryLevelPct: number | null
+    batteryLevelPct: number
     color: string | null
     description: any
     discriminator: string | null
@@ -87,9 +87,6 @@ export const ApiProvider: FC = ({ children }) => {
         setParkings(res2.data.objects)
         setPoi(res3.data.objects)
         setIsLoading(false)
-        console.log(res1.data.objects)
-        console.log(res2.data.objects)
-        console.log(res3.data.objects)
     }
 
     useEffect(() => {

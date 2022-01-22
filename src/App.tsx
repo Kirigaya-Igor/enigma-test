@@ -1,12 +1,14 @@
 import { useJsApiLoader } from '@react-google-maps/api'
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import { ApiProvider } from './components/API/API'
+import { Filters } from './components/Filters/Filters'
+import { Loader } from './components/Loader/Loader'
 import { Map } from './components/Map/Map'
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
-const App = () => {
+const App: React.FC = () => {
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -14,10 +16,15 @@ const App = () => {
     googleMapsApiKey: API_KEY
   })
 
+  const [checkedState, setCheckedState] = useState<Array<boolean>>([true, true, true]);
+  const [radioState, setRadioState] = useState<string>('all');
+  const [batteryState, setBatteryState] = useState<string>('30');
+
   return (
     <div>
       <ApiProvider>
-        {isLoaded ? <Map /> : <h2>Loading...</h2>}
+        <Filters checkedState={checkedState} setCheckedState={setCheckedState} radioState={radioState} setRadioState={setRadioState} batteryState={batteryState} setBatteryState={setBatteryState} />
+        {isLoaded ? <Map checkedState={checkedState} radioState={radioState} batteryState={batteryState} /> : <div className='loaderPanel'><Loader /></div>}
       </ApiProvider>
     </div>
   );

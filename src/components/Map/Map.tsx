@@ -43,17 +43,16 @@ export const Map: React.FC<MapType> = ({checkedState, radioState, batteryState})
     }, [])
 
     useEffect(() => {
-        if (radioState === 'all') setHelpCars(cars)
-        if (radioState === 'available') setHelpCars(cars.filter((item: CarType) => item.status === 'AVAILABLE'))
-        if (radioState === 'notAvailable') setHelpCars(cars.filter((item: CarType) => item.status !== 'AVAILABLE'))
-    }, [radioState, cars])
-    
-    useEffect(() => {
-        if (batteryState === '30') setHelpCars(cars)
-        if (batteryState === '50') setHelpCars(cars.filter((item: CarType) => item.batteryLevelPct > 50))
-        if (batteryState === '70') setHelpCars(cars.filter((item: CarType) => item.batteryLevelPct > 70))
-        if (batteryState === '90') setHelpCars(cars.filter((item: CarType) => item.batteryLevelPct > 90))  
-    }, [batteryState, cars])
+        let help: Array<CarType> = []
+        if (radioState === 'all') help = cars
+        if (radioState === 'available') help = cars.filter((item: CarType) => item.status === 'AVAILABLE')
+        if (radioState === 'notAvailable') help = cars.filter((item: CarType) => item.status !== 'AVAILABLE')
+
+        if (batteryState === '30') setHelpCars(help)
+        if (batteryState === '50') setHelpCars(help.filter((item: CarType) => item.batteryLevelPct > 50))
+        if (batteryState === '70') setHelpCars(help.filter((item: CarType) => item.batteryLevelPct > 70))
+        if (batteryState === '90') setHelpCars(help.filter((item: CarType) => item.batteryLevelPct > 90))
+    }, [radioState, batteryState, cars])
 
     return (
         <div className='customContainer'>

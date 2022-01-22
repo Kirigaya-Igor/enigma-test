@@ -21,6 +21,8 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    "./parcel.d.ts",
+    "import-png.d.ts"
   ]
 }

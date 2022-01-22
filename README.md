@@ -1,3 +1,13 @@
+To run the application, you need to follow this link:
+
+https://dev.vozilla.pl/api-client-portal/map?objectType=VEHICLE
+
+and give it permission so that the browser can recognize it
+
+after this link, you can close and open the application itself
+
+https://kirigaya-igor.github.io/enigma-test/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -2,7 +2,7 @@ import React from "react";
 
 const checkboxes = [{ name: 'Samohode', value: 'cars' }, { name: 'Parkingi', value: 'parkings' }, { name: 'POI', value: 'POI' }]
 const radio = [{ name: 'Wszystkie', value: 'all' }, { name: 'Dostępne', value: 'available' }, { name: 'Niedostępne', value: 'notAvailable' }]
-const battery = [{ name: 'Ladowanie baterii dowolne', value: 'all' }, { name: 'Ladowanie baterii > 30%', value: '30' }, { name: 'Ladowanie baterii > 50%', value: '50' }, { name: 'Ladowanie baterii > 70%', value: '70' }, { name: 'Ladowanie baterii > 90%', value: '90' }]
+const battery = [{ name: 'Ladowanie baterii dowolne', value: '0' }, { name: 'Ladowanie baterii > 30%', value: '30' }, { name: 'Ladowanie baterii > 50%', value: '50' }, { name: 'Ladowanie baterii > 70%', value: '70' }, { name: 'Ladowanie baterii > 90%', value: '90' }]
 
 type FiltersType = {
     checkedState: Array<boolean>

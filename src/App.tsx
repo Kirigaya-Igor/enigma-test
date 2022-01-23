@@ -18,7 +18,7 @@ const App: React.FC = () => {
 
   const [checkedState, setCheckedState] = useState<Array<boolean>>([true, true, true]);
   const [radioState, setRadioState] = useState<string>('all');
-  const [batteryState, setBatteryState] = useState<string>('all');
+  const [batteryState, setBatteryState] = useState<string>('0');
 
   return (
     <div>

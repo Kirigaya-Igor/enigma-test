@@ -48,7 +48,7 @@ export const Map: React.FC<MapType> = ({checkedState, radioState, batteryState})
         if (radioState === 'available') help = cars.filter((item: CarType) => item.status === 'AVAILABLE')
         if (radioState === 'notAvailable') help = cars.filter((item: CarType) => item.status !== 'AVAILABLE')
 
-        if (batteryState === 'all') setHelpCars(help)
+        if (batteryState === '0') setHelpCars(help)
         if (batteryState === '30') setHelpCars(help.filter((item: CarType) => item.batteryLevelPct > 30))
         if (batteryState === '50') setHelpCars(help.filter((item: CarType) => item.batteryLevelPct > 50))
         if (batteryState === '70') setHelpCars(help.filter((item: CarType) => item.batteryLevelPct > 70))

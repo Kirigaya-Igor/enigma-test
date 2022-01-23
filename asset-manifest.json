@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/enigma-test/static/css/main.0c77a014.css",
-    "main.js": "/enigma-test/static/js/main.380b6da4.js",
+    "main.js": "/enigma-test/static/js/main.3821e282.js",
     "static/media/redCar.png": "/enigma-test/static/media/redCar.392b21915ed8308db0ca.png",
     "static/media/greenCar.png": "/enigma-test/static/media/greenCar.0d79f7d93af84f16f22e.png",
     "static/media/poiIcon.png": "/enigma-test/static/media/poiIcon.968ff92ef8e2d70294fa.png",
@@ -9,10 +9,10 @@
     "index.html": "/enigma-test/index.html",
     "static/media/spinner.svg": "/enigma-test/static/media/spinner.583e7e3a92cf5ff19851e1aedd64a6f5.svg",
     "main.0c77a014.css.map": "/enigma-test/static/css/main.0c77a014.css.map",
-    "main.380b6da4.js.map": "/enigma-test/static/js/main.380b6da4.js.map"
+    "main.3821e282.js.map": "/enigma-test/static/js/main.3821e282.js.map"
   },
   "entrypoints": [
     "static/css/main.0c77a014.css",
-    "static/js/main.380b6da4.js"
+    "static/js/main.3821e282.js"
   ]
 }

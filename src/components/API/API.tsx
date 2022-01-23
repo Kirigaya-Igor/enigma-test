@@ -5,17 +5,17 @@ import axios from 'axios'
 export const ApiContext = createContext();
 
 type address = {
-    street: string | null 
+    street: string | null
     house: string | null
     city: string | null
 }
 
-type color = { 
-    rgb: string | null 
-    alpha: number | null 
+type color = {
+    rgb: string | null
+    alpha: number | null
 }
 
-type location = { 
+type location = {
     latitude: number
     longitude: number
 }
@@ -79,14 +79,32 @@ export const ApiProvider: FC = ({ children }) => {
     const [isLoading, setIsLoading] = useState<boolean>(true)
 
     const getData = async () => {
-        const res1 = await axios.get('https://dev.vozilla.pl/api-client-portal/map?objectType=VEHICLE')
-        const res2 = await axios.get('https://dev.vozilla.pl/api-client-portal/map?objectType=PARKING')
-        const res3 = await axios.get('https://dev.vozilla.pl/api-client-portal/map?objectType=POI')
-
-        setCars(res1.data.objects)
-        setParkings(res2.data.objects)
-        setPoi(res3.data.objects)
-        setIsLoading(false)
+        try {
+            const res1 = await axios.get('https://dev.vozilla.pl/api-client-portal/map?objectType=VEHICLE')
+            setCars(res1.data.objects)
+            setIsLoading(false)
+        } catch (e) {
+            console.log(`Some error: ${e} `)
+            setIsLoading(false)
+        }
+        try {
+            setIsLoading(true)
+            const res2 = await axios.get('https://dev.vozilla.pl/api-client-portal/map?objectType=PARKING')
+            setParkings(res2.data.objects)
+            setIsLoading(false)
+        } catch (e) {
+            console.log(`Some error: ${e} `)
+            setIsLoading(false)
+        }
+        try {
+            setIsLoading(true)
+            const res3 = await axios.get('https://dev.vozilla.pl/api-client-portal/map?objectType=POI')
+            setPoi(res3.data.objects)
+            setIsLoading(false)
+        } catch (e) {
+            console.log(`Some error: ${e} `)
+            setIsLoading(false)
+        }
     }
 
     useEffect(() => {

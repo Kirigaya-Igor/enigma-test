@@ -71,6 +71,8 @@ export type PoiType = {
     picture: any
 }
 
+const URL = 'https://dev.vozilla.pl/api-client-portal/map'
+
 export const ApiProvider: FC = ({ children }) => {
 
     const [cars, setCars] = useState<Array<CarType>>([])
@@ -81,7 +83,7 @@ export const ApiProvider: FC = ({ children }) => {
     const fetchData = async (dataType: string, setData: (value: any) => void) => {
         try {
             setIsLoading(true)
-            const res = await axios.get(`https://dev.vozilla.pl/api-client-portal/map?objectType=${dataType}`)
+            const res = await axios.get(`${URL}?objectType=${dataType}`)
             setData(res.data.objects)
             setIsLoading(false)
         } catch (e) {

@@ -78,37 +78,21 @@ export const ApiProvider: FC = ({ children }) => {
     const [poi, setPoi] = useState<Array<PoiType>>([])
     const [isLoading, setIsLoading] = useState<boolean>(true)
 
-    const getData = async () => {
-        try {
-            const res1 = await axios.get('https://dev.vozilla.pl/api-client-portal/map?objectType=VEHICLE')
-            setCars(res1.data.objects)
-            setIsLoading(false)
-        } catch (e) {
-            console.log(`Some error: ${e} `)
-            setIsLoading(false)
-        }
+    const fetchData = async (dataType: string, setData: (value: any) => void) => {
         try {
             setIsLoading(true)
-            const res2 = await axios.get('https://dev.vozilla.pl/api-client-portal/map?objectType=PARKING')
-            setParkings(res2.data.objects)
+            const res = await axios.get(`https://dev.vozilla.pl/api-client-portal/map?objectType=${dataType}`)
+            setData(res.data.objects)
             setIsLoading(false)
         } catch (e) {
-            console.log(`Some error: ${e} `)
             setIsLoading(false)
-        }
-        try {
-            setIsLoading(true)
-            const res3 = await axios.get('https://dev.vozilla.pl/api-client-portal/map?objectType=POI')
-            setPoi(res3.data.objects)
-            setIsLoading(false)
-        } catch (e) {
-            console.log(`Some error: ${e} `)
-            setIsLoading(false)
-        }
+        }    
     }
 
     useEffect(() => {
-        getData()
+        fetchData('VEHICLE', setCars)
+        fetchData('PARKING', setParkings)
+        fetchData('POI', setPoi)
     }, [])
 
     return (

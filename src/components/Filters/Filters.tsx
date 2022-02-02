@@ -1,7 +1,8 @@
 import React from "react";
+import { CustomDropdown } from "../common/CustomDropdown";
 
 const checkboxes = [{ name: 'Samohode', value: 'cars' }, { name: 'Parkingi', value: 'parkings' }, { name: 'POI', value: 'POI' }]
-const radio = [{ name: 'Wszystkie', value: 'all' }, { name: 'Dostępne', value: 'available' }, { name: 'Niedostępne', value: 'notAvailable' }]
+const carList = [{ name: 'Wszystkie', value: 'all' }, { name: 'Dostępne', value: 'available' }, { name: 'Niedostępne', value: 'notAvailable' }]
 const battery = [{ name: 'Ladowanie baterii dowolne', value: '0' }, { name: 'Ladowanie baterii > 30%', value: '30' }, { name: 'Ladowanie baterii > 50%', value: '50' }, { name: 'Ladowanie baterii > 70%', value: '70' }, { name: 'Ladowanie baterii > 90%', value: '90' }]
 
 type FiltersType = {
@@ -47,68 +48,11 @@ export const Filters: React.FC<FiltersType> = ({checkedState, setCheckedState, r
             </button>
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav">
-                <li className="nav-item dropdown">
-                  <span className="nav-link dropdown-toggle" id="navbarDarkDropdownMenu1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Wybór elementów
-                  </span>
-                  <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenu1">
-                    {checkboxes.map((item, index) => (
-                      <li key={item.value + index}>
-                        <input
-                          type="checkbox"
-                          className="btn-check"
-                          id={`custom-checkbox-${index}`}
-                          value={item.value}
-                          checked={checkedState[index]}
-                          onChange={() => handleOnChange(index)}
-                        />
-                        <label className="btn btn-outline-light btn-sm customCheckbox" htmlFor={`custom-checkbox-${index}`}>{item.name}</label>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
+                <CustomDropdown title={'Wybór elementów'} data={checkboxes} type={'checkbox'} checkedState={checkedState} handleOnChange={handleOnChange}/>
 
-                <li className="nav-item dropdown">
-                  <span className="nav-link dropdown-toggle" id="navbarDarkDropdownMenu2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Pokaż samochode
-                  </span>
-                  <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenu2">
-                    {radio.map((item, index) => (
-                      <li key={item.value + index}>
-                        <input
-                          type="radio"
-                          className="btn-check"
-                          id={`custom-radio-${index}`}
-                          value={item.value}
-                          checked={isRadioSelected(item.value)}
-                          onChange={handleCarsClick}
-                        />
-                        <label className="btn btn-outline-light btn-sm customCheckbox" htmlFor={`custom-radio-${index}`}>{item.name}</label>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
+                <CustomDropdown title={'Pokaż samochode'} data={carList} type={'radio'} isRadioSelected={isRadioSelected} handleOnChange={handleCarsClick}/>
 
-                <li className="nav-item dropdown">
-                  <span className="nav-link dropdown-toggle" id="navbarDarkDropdownMenu3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Ladowanie baterii
-                  </span>
-                  <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenu3">
-                    {battery.map((item, index) => (
-                      <li key={item.value + index}>
-                        <input
-                          type="radio"
-                          className="btn-check"
-                          id={`custom-battery-${index}`}
-                          value={item.value}
-                          checked={isRadioSelected(item.value)}
-                          onChange={handleBatteryClick}
-                        />
-                        <label className="btn btn-outline-light btn-sm customCheckbox" htmlFor={`custom-battery-${index}`}>{item.name}</label>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
+                <CustomDropdown title={'Ladowanie baterii'} data={battery} type={'radio'} isRadioSelected={isRadioSelected} handleOnChange={handleBatteryClick}/>
               </ul>
             </div>
           </div>
